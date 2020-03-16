@@ -35,50 +35,50 @@ class ExemplesAjaxFormDataController extends AbstractController
         $arrayReponse = ['message' => 'Bienvenu, ' . $valeurNom]; 
         return new JsonResponse ($arrayReponse);
     }
-//    
-//    
-//    // exemple d'utilisation d'AJAX avec de blocs ("master page")
-//    
-//    /**
-//     * @Route ("/exemples/ajax/form/data/exemple1/affichage/master/page");
-//     */
-//    public function exemple1AffichageMasterPage (){
-//        return $this->render ("/exemples_ajax_form_data/exemple1_affichage_master_page.html.twig");
-//    }
-//    
-//    /**
-//     * @Route ("/exemples/ajax/form/data/exemple1/traitement/master/page");
-//     */
-//    // action qui traite la commande AJAX, elle n'a pas une vue associée
-//    public function exemple1TraitementMasterPage (Request $requeteAjax){
-//        $valeurNom = $requeteAjax->get ('nom');
-//        $arrayReponse = ['message' => 'Bienvenu, ' . $valeurNom]; 
-//        return new JsonResponse ($arrayReponse);
-//
-//    }
-//    
-//    
-//    
-//    // exemple d'utilisation d'AJAX avec de blocs ("master page")
-//    // et fichier JS externe (/public/assets/js/exemple1Ajax.js)
-//    
-//    /**
-//     * @Route ("/exemples/ajax/form/data/exemple1/affichage/master/page/script/externe");
-//     */
-//    public function exemple1AffichageMasterPageScriptExterne (){
-//        return $this->render ("/exemples_ajax_form_data/exemple1_affichage_master_page_script_externe.html.twig");
-//    }
-//    
-//    /**
-//     * @Route ("/exemples/ajax/form/data/exemple1/traitement/master/page/script/externe");
-//     */
-//    // action qui traite la commande AJAX, elle n'a pas une vue associée
-//    public function exemple1TraitementMasterPageScriptExterne (Request $requeteAjax){
-//        $valeurNom = $requeteAjax->get ('nom');
-//        $arrayReponse = ['message' => 'Bienvenu, ' . $valeurNom]; 
-//        return new JsonResponse ($arrayReponse);
-//
-//    }
+   
+   
+   // exemple d'utilisation d'AJAX avec de blocs ("master page")
+   
+   /**
+    * @Route ("/exemples/ajax/form/data/exemple1/affichage/master/page");
+    */
+   public function exemple1AffichageMasterPage (){
+       return $this->render ("/exemples_ajax_form_data/exemple1_affichage_master_page.html.twig");
+   }
+   
+   /**
+    * @Route ("/exemples/ajax/form/data/exemple1/traitement/master/page");
+    */
+   // action qui traite la commande AJAX, elle n'a pas une vue associée
+   public function exemple1TraitementMasterPage (Request $requeteAjax){
+       $valeurNom = $requeteAjax->get ('nom');
+       $arrayReponse = ['message' => 'Bienvenu, ' . $valeurNom]; 
+       return new JsonResponse ($arrayReponse);
+
+   }
+   
+   
+   
+   // exemple d'utilisation d'AJAX avec de blocs ("master page")
+   // et fichier JS externe (/public/assets/js/exemple1Ajax.js)
+   
+   /**
+    * @Route ("/exemples/ajax/form/data/exemple1/affichage/master/page/script/externe");
+    */
+   public function exemple1AffichageMasterPageScriptExterne (){
+       return $this->render ("/exemples_ajax_form_data/exemple1_affichage_master_page_script_externe.html.twig");
+   }
+   
+   /**
+    * @Route ("/exemples/ajax/form/data/exemple1/traitement/master/page/script/externe");
+    */
+   // action qui traite la commande AJAX, elle n'a pas une vue associée
+   public function exemple1TraitementMasterPageScriptExterne (Request $requeteAjax){
+       $valeurNom = $requeteAjax->get ('nom');
+       $arrayReponse = ['message' => 'Bienvenu, ' . $valeurNom]; 
+       return new JsonResponse ($arrayReponse);
+
+   }
 //
 //    
 //    // AJAX avec des arrays d'objets

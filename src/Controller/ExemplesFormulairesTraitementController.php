@@ -39,7 +39,7 @@ class ExemplesFormulairesTraitementController extends AbstractController
             // Remplissage de l'entité avec les données du formulaire
             
             
-            $livre = $formulaireLivre->getData();
+            //   $livre = $formulaireLivre->getData(); // pas besoin, le submit remplit l'entite
             
             // Rendu d'une vue où on affiche les données
             // Normalement on faire CRUD ici ou une autre opération...

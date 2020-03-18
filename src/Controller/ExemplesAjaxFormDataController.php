@@ -23,7 +23,7 @@ class ExemplesAjaxFormDataController extends AbstractController
      * @Route ("/exemples/ajax/form/data/exemple1/affichage");
      */
     public function exemple1Affichage (){
-        return $this->render ("/exemples_ajax_form_data/exemple1_affichage.html.twig");
+        return $this->render ("/exemples/ajax/form/data/exemple1_affichage.html.twig");
     }
     
     /**
@@ -91,7 +91,7 @@ class ExemplesAjaxFormDataController extends AbstractController
 //    
 //    // on affiche un input pour chercher les livres qui portent un titre
 //    public function exempleRenvoiEntite(){
-//        return $this->render ("/exemples_ajax_form_data/exemple_renvoi_entite.html.twig");
+//        return $this->render ("/exemples/ajax/form/data/exemple_renvoi_entite.html.twig");
 //    }
 //    
 //    /**

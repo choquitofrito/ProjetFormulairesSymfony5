@@ -1,0 +1,19 @@
+{% extends '/exemples_ajax/master_page.html.twig' %}
+
+{% block contenuMain %}
+<!-- on mettra cet script dans un block  -->
+
+<!-- formulaire à envoyer  -->
+<form id="leFormulaire" method="POST">
+    <input type="text" name="nom" />
+    <input type="submit" id="envoyerNom" value="Envoyer" />
+    <div id="divMessage"></div>
+</form>
+{% endblock %}
+
+
+{% block javascripts %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="{{ asset('/assets/js/exemple1Ajax.js') }}"></script>
+{% endblock %}
+

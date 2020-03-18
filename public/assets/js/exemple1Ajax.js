@@ -1,5 +1,5 @@
 
-console.log(" {{path ('exemple1_traitement' )}}");
+
 
 envoyerNom.addEventListener("click", function (event) {
     event.preventDefault();
@@ -7,7 +7,7 @@ envoyerNom.addEventListener("click", function (event) {
     console.log(document.getElementById("leFormulaire"));
 
     // on génére la route
-    let route = Routing.generate('exemple1_traitement'); // pas de slug, pas de paramètres dans la route
+    let route = Routing.generate("exemple1_traitement_externe"); // pas de slug, pas de paramètres dans la route
 
     axios({
         url: route,

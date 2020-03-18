@@ -70,7 +70,7 @@ class ExemplesAjaxAxiosController extends AbstractController
     }
     
     /**
-     * @Route ("/exemples/ajax/axios/exemple1/traitement/master/page/script/externe");
+     * @Route ("/exemples/ajax/axios/exemple1/traitement/master/page/script/externe", options={"expose"=true}, name="exemple1_traitement_externe");
      */
     // action qui traite la commande AJAX, elle n'a pas une vue associée
     public function exemple1TraitementMasterPageScriptExterne (Request $requeteAjax){

@@ -12,8 +12,31 @@
 {% endblock %}
 
 
+
 {% block javascripts %}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- 
+le script externe contient la route du POST pour AXIOS... 
+elle est incluse dans un fichier .js et pas .twig
+alors "path" ne fonctionnera pas. 
+Mais on peut resoudre ce problème avec le bundle jsrouting-bundle
+
+https://symfony.com/doc/master/bundles/FOSJsRoutingBundle/installation.html
+https://symfony.com/doc/master/bundles/FOSJsRoutingBundle/usage.html#generating-uris
+
+
+qui nous permetra de générer les chemins des routes en JS à partir du name d'une route:
+
+Routing.generate('nom_de_notre_route', {
+    'slug': 'mon_slug'
+});
+
+importez-le dans le projet: composer require friendsofsymfony/jsrouting-bundle
+-->
+<script src="{{ asset('/bundles/fosjsrouting/js/router.min.js') }}"></script>
 <script src="{{ asset('/assets/js/exemple1Ajax.js') }}"></script>
+
 {% endblock %}
+
 

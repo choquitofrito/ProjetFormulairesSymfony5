@@ -20,7 +20,7 @@
     envoyerNom.addEventListener("click", function (event) {
         event.preventDefault();
 
-        console.log (document.getElementById("leFormulaire"));
+        console.log(document.getElementById("leFormulaire"));
 
         axios({
             url: '{{path ("exemple1_traitement")}}',
@@ -29,16 +29,15 @@
             data: new FormData(document.getElementById("leFormulaire"))
         })
         .then(function (response) {
-            // response.data est un objet qui correspond à l'array associatif envoyé dans le controller
-            // JsonResponse a transformé l'array en JSON. Axios transforme le JSON en objet JS
-            // (et on utilise ici la clé "leMessage")
-            document.getElementById("divMessage").innerHTML = response.data.leMessage;
-            console.log (response);
+                // response.data est un objet qui correspond à l'array associatif envoyé dans le controller
+                // JsonResponse a transformé l'array en JSON. Axios transforme le JSON en objet JS
+                // (et on utilise ici la clé "leMessage")
+                document.getElementById("divMessage").innerHTML = response.data.leMessage;
+                console.log(response);
         })
         .catch(function (error) {
-            console.log(error);
+                console.log(error);
         });
     });    
 </script>
 {% endblock %}
-

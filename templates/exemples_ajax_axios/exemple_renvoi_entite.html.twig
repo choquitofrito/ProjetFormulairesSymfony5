@@ -1,48 +1,49 @@
+{% extends "base.html.twig" %}
 
-Titre<input type="text" id="inputTitre" />
-<button id="envoyerTitre">Envoyer</button>
-<div id="divLivres"></div>
+{% block body %}
+<!-- formulaire à envoyer  -->
+<form id="leFormulaire" method="POST">
+    Titre<input type="text" name="titre" />
+    <button id="envoyerTitre">Envoyer</button>
+    <div id="divLivres"></div>
+</form>
+{% endblock %}
 
+{% block javascripts %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-// quand on appuie sur une touche et on relâche la touche
-// C'est l'input qui a l'événement. Le bouton ne fait rien ;)s
-inputTitre.addEventListener ("keyup", function (event){
-    var xhr = new XMLHttpRequest ();
-    
-    xhr.onreadystatechange = function (){
-        if (xhr.readyState == 4){
-            if (xhr.status == 200){
-                // transformer le string JSON en objet JavasScript
-                // nous sommes censés de recevoir un array de livres
-                var arrayLivres = JSON.parse (xhr.responseText);
-                
-                // on vide le div
-                divLivres.innerHTML = "";
-                
-                var ul = divLivres.appendChild(document.createElement ("ul"));
-                
-                for (i=0;i<arrayLivres.length;i++){
-                    var li = ul.appendChild (document.createElement ("li"));
-                    li.appendChild (document.createTextNode (arrayLivres[i]['titre']));
-                
-                    
-                }
-                
-                console.log (arrayLivres);
-            }
-            // s'il y a une erreur:
-            else {
-                // effacer en production!
-                console.log (xhr.reponseText);
-            }
+    envoyerTitre.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        console.log (document.getElementById("leFormulaire"));
+
+        axios({
+            url: '{{ path ("renvoi_entite_traitement") }}',
+            method: 'POST',
+            headers: { 'Content-Type': 'multipart/form-data' },
+            data: new FormData(document.getElementById("leFormulaire"))
+        })
+        .then(function (response) {
+            // response.data est un objet qui correspond à l'array associatif envoyé dans le controller
+            // JsonResponse a transformé l'array en JSON. Axios transforme le JSON en array d'objets JS
+            // (et on utilise ici la clé "leMessage")
             
-        }
-        
-    }
-    
-    xhr.open ('POST','/exemples/ajax/exemple/renvoi/entite/traitement');
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send ("titre=" + inputTitre.value);
-    
-});    
+            console.log (response.data);
+            let arrayLivres = response.data;
+            console.log (arrayLivres);
+
+            var ul = divLivres.appendChild(document.createElement ("ul"));
+                
+            for (i=0;i< arrayLivres.length;i++){
+                var li = ul.appendChild (document.createElement ("li"));
+                li.appendChild (document.createTextNode (arrayLivres[i]['titre']));
+            }
+
+            
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    });    
 </script>
+{% endblock %}

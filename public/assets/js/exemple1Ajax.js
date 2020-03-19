@@ -6,7 +6,7 @@ envoyerNom.addEventListener("click", function (event) {
 
     console.log(document.getElementById("leFormulaire"));
 
-    // on génére la route
+    // on génére la route, on l'utilise dans l'appel Axios
     let route = Routing.generate("exemple1_traitement_externe"); // pas de slug, pas de paramètres dans la route
 
     axios({

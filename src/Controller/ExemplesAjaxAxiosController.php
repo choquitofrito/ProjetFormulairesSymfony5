@@ -75,7 +75,7 @@ class ExemplesAjaxAxiosController extends AbstractController
     // action qui traite la commande AJAX, elle n'a pas une vue associée
     public function exemple1TraitementMasterPageScriptExterne (Request $requeteAjax){
         $valeurNom = $requeteAjax->get ('nom');
-        $arrayReponse = ['message' => 'Bienvenu, ' . $valeurNom]; 
+        $arrayReponse = ['leMessage' => 'Bienvenu, ' . $valeurNom]; 
         return new JsonResponse ($arrayReponse);
 
     }
@@ -95,7 +95,7 @@ class ExemplesAjaxAxiosController extends AbstractController
     }
     
     /**
-     * @Route ("/exemples/ajax/axios/exemple/renvoi/entite/traitement");
+     * @Route ("/exemples/ajax/axios/exemple/renvoi/entite/traitement",name ="renvoi_entite_traitement");
      */
     
     // action qui traite une commande AJAX, elle a une vue associée
@@ -106,13 +106,14 @@ class ExemplesAjaxAxiosController extends AbstractController
         $query = $em->createQuery ("SELECT livre FROM App\Entity\Livre livre WHERE".
                                 " livre.titre LIKE :titre");
         $query->setParameter ('titre', '%'.$titre.'%');
-        
+        // dd($titre); // il faut vérifier qu'on reçoit le titre!
         // $resultat = $query->getResult();
         // dump ($resultat);
         // die();
  
         // avec getResult() on obtient un array contenant toutes les entités Livre 
-        // qui contiennent dans son titre le text saisi dans l'input
+        // qui contiennent dans son titre le texte saisi dans l'input
+        
         // Chaque entité contient toutes ses propriétés et
         // les références à d'autres entités: JSON.parse ne pourra pas l'interpreter ...
        
@@ -120,19 +121,17 @@ class ExemplesAjaxAxiosController extends AbstractController
         // contenant (dans ce cas) la réprésentation d'array de chaque entité 
         // contenant uniquement les propriétés de base propres à l'objet 
         // (pas les "rélations" ni d'autres propriétés)
-        $livreEnArray = $query->getArrayResult();
-       
+        $livresEnArray = $query->getArrayResult();
         // Pour mieux comprendre faites un dump ici et regardez la 
         // réponse du serveur. 
 
-        // dump ($resultat);
-        // die();
-
+        // dd ($resultat);
+       
         // Notez que JSON.parse n'arrivera à interpreter la réponse si vous faites dump ou 
         // echo ici, car votre réponse ne sera plus du pur JSON
         // dump ($objetLivre);
         
-        return new JsonResponse ($livreEnArray);
+        return new JsonResponse ($livresEnArray);
         
     }
 

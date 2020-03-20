@@ -86,6 +86,13 @@ class ExemplesAjaxAxiosController extends AbstractController
         return new JsonResponse($arrayReponse);
     }
 
+    /**
+     * @Route("/exemples/ajax/axios/exemple/affichage/objets/repo")
+     */
+    public function exempleAffichageObjetsRepo()
+    {
+        return $this->render('/exemples_ajax_axios/exemple_affichage_objets_repo.html.twig');
+    }
 
     
     /**
@@ -96,13 +103,6 @@ class ExemplesAjaxAxiosController extends AbstractController
         return $this->render('/exemples_ajax_axios/exemple_affichage_objets_dql.html.twig');
     }
 
-    /**
-     * @Route("/exemples/ajax/axios/exemple/affichage/objets/repo")
-     */
-    public function exempleAffichageObjetsRepo()
-    {
-        return $this->render('/exemples_ajax_axios/exemple_affichage_objets_repo.html.twig');
-    }
 
 
     // 1. action de traitement du AJAX, on utilise les méthodes du repository (findBy, findAll, etc...)
